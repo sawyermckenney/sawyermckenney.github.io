@@ -1,0 +1,40 @@
+.Mancala-Project {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align content to the left */
+    height: 100vh; /* Full viewport height */
+    padding: 4rem 2rem; /* Add space at the top and sides */
+    box-sizing: border-box; /* Include padding in size calculation */
+    background: linear-gradient(135deg, #ffffff, #f0f4f8); /* Subtle gradient background */
+    border-radius: 10px; /* Smooth corner edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  }
+  
+.Mancala-Project h1{
+    font-size: 2.5rem; /* Large font size for the title */
+    font-weight: bold;
+    color: #2c3e50; /* Darker color for emphasis */
+    margin-bottom: 1rem; /* Space below the title */
+    border-bottom: 2px solid #3498db; /* Underline effect */
+    padding-bottom: 0.5rem; /* Space for the underline */
+  }
+  
+  h2 {
+    font-size: 1.2rem; /* Slightly smaller than the title */
+    font-weight: normal;
+    color: #34495e; /* Subtle dark tone */
+    line-height: 1.8; /* Improve readability */
+    margin-bottom: 2rem; /* Space between the text and the button */
+  }
+  
+  button:disabled {
+    background-color: #bdc3c7; /* Gray color for disabled button */
+    cursor: not-allowed; /* Show not-allowed cursor */
+  }
+  
+  
+  .error-message {
+    color: #e74c3c; /* Red for errors */
+    font-size: 1rem; /* Consistent size */
+    margin-top: 1rem; /* Space above the message */
+  }

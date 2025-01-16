@@ -1,0 +1,101 @@
+.navBar {
+    width: 100vw;
+    height: 4.44vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(222, 230, 238, 0.706);
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    z-index: 9999;
+}
+.hamburger-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  
+  .hamburger-button .hamburger-lines {
+    transition: stroke 0.3s ease; 
+  }
+  
+  .hamburger-button:hover .hamburger-lines {
+    stroke: rgb(158, 136, 136); 
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: rgb(192, 20, 20);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for better visibility */
+    transition: left 0.3s ease;
+    z-index: 10000; /* Ensure it is above everything */
+  }
+  
+  .sidebar.active {
+    left: 0; 
+  }
+  
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    height: 100%;
+  }
+  
+  .sidebar-content{
+    text-decoration: none;
+    color: rgb(111, 39, 39);
+    padding: 0px 0;
+    transition: color 0.3s ease;
+    text-align: center;
+  }
+  
+  .sidebar-content a:hover {
+    color: #141414;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+  }
+  
+  .signout-button {
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
+
+  
+
+  
+  

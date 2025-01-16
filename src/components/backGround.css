@@ -1,0 +1,10 @@
+/* Ensure the background spans the entire viewport */
+.new-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right, #f9fafb, #e0e7ff); /* Fade to the right */
+  z-index: -1; /* Behind all content */
+}
