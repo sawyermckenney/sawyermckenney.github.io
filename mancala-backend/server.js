@@ -9,7 +9,7 @@ app.use(express.json());
 // Endpoint to execute Python script
 app.post("/run-script", (req, res) => {
     console.log("Starting Python script execution...");
-    exec("python3 main.py", { cwd: "/Users/sawyermckenney/Desktop/ASPENOVA/ASPENOVA-Frontend/src/components" }, (error, stdout, stderr) => {
+    exec("python3 main.py", { cwd: "/Users/sawyermckenney/Desktop/ASPENOVA/SawyerMcKenneyPersonalSite/src/components" }, (error, stdout, stderr) => {
       if (error) {
         console.error(`Execution Error: ${error.message}`);
         return res.status(500).json({ error: error.message });

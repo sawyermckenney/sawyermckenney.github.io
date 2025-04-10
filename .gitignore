@@ -1,24 +1,56 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# -------------------------------
+# General
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+*.log
+*.lock
+
+# Node & NPM
+node_modules/
+package-lock.json
+yarn.lock
+
+# Vite build output
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS-specific
+Thumbs.db
+
+# Env/Secrets
+.env
+.env.local
+
+# Build tools
+/build/
+.cache/
+output.log
+
+# Firebase (if used)
+src/firebase.js
+
+# Appwrite (optional, depending on usage)
+appwrite.json
+
+# Symlinked content / tests
+test/
+tests/
+coverage/
+
+# Local Python execution artifacts
+src/components/__pycache__/
+src/components/*.pyc
+
+# Output from script execution
+*.out
+
+# Assets that shouldn't be tracked (if applicable)
+src/assets/*.bak
+src/assets/*.tmp

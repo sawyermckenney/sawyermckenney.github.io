@@ -1,4 +1,4 @@
-import React from "react";
+import resumePDF from "../assets/SawyerMcKenneyResume.pdf";
 
 const Resume = () => {
   return (
@@ -8,16 +8,18 @@ const Resume = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh", // Full viewport height for vertical centering
-        marginTop: "120px", // Reset margin to align vertically
+        paddingTop: "80px", // Adjust if there's a fixed navbar
+        boxSizing: "border-box",
       }}
     >
       <iframe
-        src="src/assets/SawyerMcKenneyResumePDF copy.pdf"
+        src={resumePDF}
         title="Sawyer McKenney Resume"
         style={{
           width: "80%",
-          height: "1100px",
+          height: "calc(100vh - 160px)", // Dynamically adjust to viewport
           border: "none",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", // Optional shadow for better visibility
         }}
       />
     </div>

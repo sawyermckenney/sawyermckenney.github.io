@@ -1,0 +1,108 @@
+
+@import "../variables.css"; /* adjust path as needed */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f4f4f9; /* Light gray background */
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    height: 25rem;
+    width: 300px;
+    margin: 10rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: lightgrey;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #6d6e72 0%, #f5edf5 46%, #696765 100%);
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    transition: 0.5s ease-in-out;
+    border-radius: 25px;
+}
+
+.heading {
+    text-align: center;
+    font-weight: 600;
+    padding-top: 1rem;
+    font-size: large;
+}
+
+.input-div {
+display: flex;
+margin-top: 1rem;
+transition: 0.5s ease-in-out;
+}
+
+.card input {
+background-color: transparent;
+border: none;
+border-bottom: 1px solid black;
+width: 12rem;
+padding: 8px;
+outline: none;
+}
+
+
+.card textarea.expandable-textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 12rem;
+    padding: 8px;
+    outline: none;
+}
+
+.button-div {
+text-align: center;
+}
+
+.submit {
+margin-top: 3rem;
+text-align: center;
+padding: 8px 3rem;
+border: none;
+background-color: black;
+color: white;
+transition: 0.5s ease-in-out;
+cursor: pointer
+}
+
+.submit:hover {
+box-shadow: rgba(44, 43, 43, 0.664)
+}
+
+.card input::placeholder {
+color: black;
+}
+
+.input:focus {
+transition: 0.2s ease-in-out;
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.input:hover {
+transition: 0.2s ease-in-out;
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.textarea:hover {
+    transition: 0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.textarea:focus {
+transition: 0.2s ease-in-out;
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.card textarea::placeholder {
+    color: black;
+} 
+

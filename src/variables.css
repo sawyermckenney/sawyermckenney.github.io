@@ -1,0 +1,11 @@
+:root {
+    --primary-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --secondary-font: 'Oswald', sans-serif;
+    --body-bg-color: #f4f4f9;
+    --card-bg-color: #ffffff;
+    --border-radius-standard: 8px;
+    --border-radius-pill: 999px;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --accent-color: #007bff;
+    --error-color: #d9534f;
+  }

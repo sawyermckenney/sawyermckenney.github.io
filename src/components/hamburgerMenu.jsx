@@ -1,147 +1,84 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { auth } from "../firebase"; // Import Firebase auth
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { account } from "../appwrite";
+
 import "./hamburgerMenu.css";
 import "../index.css";
+import "../Profile.css"; // Import the new Profile.css
 
-const HamburgerMenu = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [user, setUser] = useState(null); // Track user authentication state
-  const sidebarRef = useRef(null);
+const Navbar = () => {
+  const [user, setUser] = useState(null);
+  const location = useLocation(); // Get the current URL path
 
-  // Toggle sidebar visibility
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
-
-  // Close sidebar on outside click
-  const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setSidebarOpen(false);
-    }
-  };
-
-  // Monitor auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // Set user state
-    });
-    return () => unsubscribe();
+    const checkLoggedIn = async () => {
+      try {
+        const currentUser = await account.get();
+        const fullName = currentUser.name;
+        const firstName = fullName.split(" ")[0];
+        console.log("👋 Welcome,", firstName);
+        setUser({ ...currentUser, firstName });
+      } catch (err) {
+        setUser(null);
+      }
+    };
+
+    checkLoggedIn();
   }, []);
 
-  useEffect(() => {
-    if (isSidebarOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isSidebarOpen]);
-
-  // Handle sign-out
-  const handleSignOut = async () => {
+  const handleLogout = async () => {
     try {
-      await signOut(auth);
-      console.log("User signed out");
-    } catch (error) {
-      console.error("Error signing out:", error.message);
+      await account.deleteSession("current");
+      setUser(null);
+      navigate("/");
+      window.location.reload();
+    } catch (err) {
+      console.error("Logout failed:", err.message);
     }
   };
 
   return (
     <div className="nav-bar-container">
       <div className="navBar">
-        <div className="hamburger-menu">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="hamburger-button"
-            aria-label="Toggle navigation"
-            onClick={toggleSidebar}
-          >
-            <path
-              className="hamburger-lines"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-            />
-          </svg>
-          <div className={`sidebar ${isSidebarOpen ? "active" : ""}`} ref={sidebarRef}>
-            <nav className="sidebar-content">
-              {/* Conditionally render Login button */}
-              {!user && (
-                <Link
-                  to="/login"
-                  className="py-2 px-4 rounded bg-black-600 text-white hover:bg-white hover:text-black transition duration-300"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Login
-                </Link>
-              )}
-              <Link
-                to="/"
-                className="py-2 px-4 rounded bg-black-600 text-white hover:bg-white hover:text-black transition duration-300"
-                onClick={() => setSidebarOpen(false)}
-              >
-                Home
+        <ul className="nav-links">
+          <li>
+            <Link to="/" className={`nav-link ${location.pathname === "/" ? "active" : ""}`}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/resume" className={`nav-link ${location.pathname === "/resume" ? "active" : ""}`}>
+              Resumé
+            </Link>
+          </li>
+          <li>
+            <Link to="/portfolio" className={`nav-link ${location.pathname === "/portfolio" ? "active" : ""}`}>
+              Portfolio
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className={`nav-link ${location.pathname === "/contact" ? "active" : ""}`}>
+              Contact
+            </Link>
+          </li>
+          {!user && (
+            <li>
+              <Link to="/login" className={`nav-link ${location.pathname === "/login" ? "active" : ""}`}>
+                Login
               </Link>
-              <Link
-                to="/resume"
-                className="py-2 px-4 rounded bg-black-600 text-white hover:bg-white hover:text-black transition duration-300"
-                onClick={() => setSidebarOpen(false)}
-              >
-                Resumé
+            </li>
+          )}
+          {user && (
+            <li>
+              <Link to="/profile" className={`nav-link ${location.pathname === "/profile" ? "active" : ""}`}>
+                {user.firstName}
               </Link>
-              <Link
-                to="/portfolio"
-                className="py-2 px-4 rounded bg-black-600 text-white hover:bg-white hover:text-black transition duration-300"
-                onClick={() => setSidebarOpen(false)}
-              >
-                Portfolio
-              </Link>
-              <Link
-                to="/contact"
-                className="py-2 px-4 rounded bg-black-600 text-white hover:bg-white hover:text-black transition duration-300"
-                onClick={() => setSidebarOpen(false)}
-              >
-                Contact
-              </Link>
-
-              {/* If user is logged in, display sign-out */}
-              {user && (
-                <button
-                  className="signout-button"
-                  onClick={() => {
-                    handleSignOut();
-                    setSidebarOpen(false);
-                  }}
-                >
-                  Sign Out
-                </button>
-              )}
-            </nav>
-          </div>
-        </div>
-
-        {/* User profile image */}
-        {user && (
-          <div className="user-profile">
-            <img
-              src={user.photoURL || "/default-profile.png"} // Fallback image
-              alt="Profile"
-              className="profile-image"
-            />
-          </div>
-        )}
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );
 };
 
-export default HamburgerMenu;
+export default Navbar;

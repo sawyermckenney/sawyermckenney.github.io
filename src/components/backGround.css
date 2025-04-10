@@ -1,4 +1,5 @@
 /* Ensure the background spans the entire viewport */
+@import "../variables.css"; /* adjust path as needed */
 .new-background {
   position: fixed;
   top: 0;

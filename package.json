@@ -10,11 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "appwrite": "^17.0.1",
     "axios": "^1.7.9",
+    "chalk": "^5.4.1",
     "firebase": "^11.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.28.0"
+    "react-router-dom": "^6.28.0",
+    "styled-components": "^6.1.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -30,6 +33,6 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "vite": "^5.4.1"
+    "vite": "^6.2.5"
   }
 }

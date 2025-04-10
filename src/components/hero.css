@@ -1,3 +1,4 @@
+@import "../variables.css"; /* adjust path as needed */
 .hero-container {
   display: flex;
   flex-direction: column; /* Stack items vertically */
@@ -170,3 +171,17 @@
   }
 }
 
+@media (max-width: 1640px) {
+  .oswald-700 {
+    font-size: 4rem; /* Adjust for smaller screens */
+    max-width: 100%; /* Limit width to 90% of the viewport width */
+    margin: 0 auto; /* Center the text horizontally */
+  }
+  .hero-image {
+    height: 5rem;
+    width: 5rem;
+  }
+  .hero-content {
+    display: none;
+  }
+}

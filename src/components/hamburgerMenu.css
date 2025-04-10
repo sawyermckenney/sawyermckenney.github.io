@@ -1,101 +1,198 @@
-.navBar {
-    width: 100vw;
-    height: 4.44vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(222, 230, 238, 0.706);
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    z-index: 9999;
+@import "../variables.css"; /* adjust path as needed */
+/* Navbar container */
+.nav-bar-container {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  padding: 0 0.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  overflow: hidden;
+  height: 3.5rem; /* Explicit height */
 }
-.hamburger-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
 
+/* Navigation bar */
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  align-items: stretch; /* Ensures full height */
+  height: 100%;
+}
+
+/* Individual link styling */
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  border-radius: 999px; /* Updated for pill shape */
+  transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal;
+  position: relative;
+  height: 100%; /* Ensures the button takes up the full navbar height */
+  padding: 0 1.5rem; /* Increased padding */
+}
+
+/* Expanding hover effect */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%; /* Initially matches button width */
+  height: 100%; /* Covers full navbar height */
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: inherit;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Added box-shadow */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Updated transition */
+  opacity: 0;
+  z-index: -1; /* Keeps it behind text */
+  transform: translateX(-50%);
+}
+
+/* Change text color on hover */
+.nav-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+/* Default Hover Expansion */
+.nav-link:hover::before {
+  width: 100%;
+  opacity: 1;
+  transform: translateX(-50%) scale(1.05); /* Added scale-up effect */
+}
+
+/* Medium Screens (Tablets) */
+@media screen and (max-width: 1024px) {
+  .nav-link:hover::before {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media screen and (max-width: 768px) {
+  .nav-link:hover::before {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .nav-link:hover::before {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+/* Default style for the hamburger menu */
+.hamburger-menu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+/* Default hamburger icon */
+.hamburger-icon {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  top: 8px;
+}
+
+/* Highlight when active (e.g., on the Home page) */
+.hamburger-menu.active {
+  background-color: black; /* Background turns black */
+  border-radius: 8px;
+}
+
+.hamburger-menu.active .hamburger-icon,
+.hamburger-menu.active .hamburger-icon::before,
+.hamburger-menu.active .hamburger-icon::after {
+  background-color: white; /* Icon turns white */
+}
+
+/* Active navbar link */
+.nav-link.active {
+  font-weight: bold;
+  color: black;
+}
+
+@media screen and (max-height: 500px) {
+  .nav-link {
+    flex-basis: 0vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-bar-container {
+    height: 3rem;
+    padding: 0 0.25rem;
   }
 
-  
-  .hamburger-button .hamburger-lines {
-    transition: stroke 0.3s ease; 
+  .nav-link {
+    padding: 0 1rem;
+    font-size: 0.9rem;
   }
-  
-  .hamburger-button:hover .hamburger-lines {
-    stroke: rgb(158, 136, 136); 
-  }
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    color: rgb(192, 20, 20);
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for better visibility */
-    transition: left 0.3s ease;
-    z-index: 10000; /* Ensure it is above everything */
-  }
-  
-  .sidebar.active {
-    left: 0; 
-  }
-  
-  .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    font-family: 'Ubuntu', sans-serif;
-    height: 100%;
-  }
-  
-  .sidebar-content{
-    text-decoration: none;
-    color: rgb(111, 39, 39);
-    padding: 0px 0;
-    transition: color 0.3s ease;
-    text-align: center;
-  }
-  
-  .sidebar-content a:hover {
-    color: #141414;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #007bff;
-  }
-  
-  .signout-button {
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
+}
 
+@media screen and (max-width: 480px) {
+  .nav-bar-container {
+    height: 2.5rem;
+    padding: 0 0.15rem;
+  }
 
-  
-
-  
-  
+  .nav-link {
+    padding: 0 0.75rem;
+    font-size: 0.85rem;
+  }
+}
